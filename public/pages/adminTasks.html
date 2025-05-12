@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks - Project Management App</title>
+    <link rel="stylesheet" href="../styles/tasks.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+          <h1>View Tasks</h1>
+            <div class="dropdown">
+              <button class="dropbtn">☰</button>
+              <div class="dropdown-content">
+                <a href="adminDashboard.html">Dashboard</a>
+                <a href="manageUsers.html">Manage Users</a>
+                <a href="adminTasks.html">View Tasks</a>
+            </div>
+          </div>
+        </div>
+      </header>
+    
+    <main>
+        <section class="task-list">
+            <h2>Your Tasks</h2>
+            <ul id="taskContainer">
+                <li>Design homepage <span class="status pending">Pending</span></li>
+                <li>Fix login bug <span class="status in-progress">In Progress</span></li>
+                <li>Deploy backend <span class="status completed">Completed</span></li>
+            </ul>
+        </section>
+
+    </main>
+    
+    <script src="../scripts/tasks.js"></script>
+</body>
+</html>

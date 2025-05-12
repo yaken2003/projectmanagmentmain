@@ -1,0 +1,265 @@
+/* Base Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8fafc;
+    color: #1e293b;
+  }
+  
+  header {
+    background-color: #1e3a8a;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 1.8em;
+    flex: 1;
+  }
+  
+  /* Dropdown */
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropbtn {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .dropdown-content a {
+    color: #1e293b;
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f1f5f9;
+  }
+  
+  .dropdown:hover .dropdown-content,
+  .dropdown:focus-within .dropdown-content {
+    display: block;
+  }
+  
+  main {
+    max-width: 960px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  /* Section Cards */
+  .project-list, .add-project, .manage-users {
+    background: white;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05);
+  }
+  
+  .project-list h2, .add-project h2, .manage-users h2 {
+    margin-top: 0;
+    color: #1e3a8a;
+  }
+  
+  /* Project List */
+  ul#projectContainer {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul#projectContainer li {
+    background: #f1f5f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 5px solid #3b82f6;
+  }
+  
+  /* Form Inputs & Buttons */
+  input, select, button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 1em;
+  }
+  
+  button {
+    background: #1e3a8a;
+    color: white;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background: #3b82f6;
+  }
+  
+  /* Report */
+  #reportContent {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f1f5f9;
+    border-radius: 8px;
+  }
+  
+  /* Manage Users */
+  .user-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .user-form input,
+  .user-form button {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  /* User Table */
+  .manage-users table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .manage-users th,
+  .manage-users td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 0.95em;
+  }
+  
+  .manage-users th {
+    background-color: #1e3a8a;
+    color: white;
+    text-transform: uppercase;
+  }
+  
+  .manage-users tr:hover {
+    background-color: #f1f5f9;
+  }
+  
+  .manage-users td button {
+    margin-right: 8px;
+    padding: 6px 10px;
+    font-size: 0.85em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #1e3a8a;
+    color: white;
+    transition: background 0.3s ease;
+  }
+  
+  .manage-users td button:hover {
+    background-color: #3b82f6;
+  }
+  
+  /* Fully Responsive */
+  @media (max-width: 1024px) {
+    .header-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .dropbtn {
+      font-size: 1em;
+      width: 100%;
+      text-align: left;
+    }
+  
+    .dropdown-content {
+      position: static;
+      width: 100%;
+      box-shadow: none;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+    }
+  
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  
+    .dropdown-content a {
+      border-top: 1px solid #e2e8f0;
+    }
+  
+    .user-form {
+      flex-direction: column;
+    }
+  
+    .manage-users table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  
+    .project-list, .add-project, .manage-users {
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 1.4em;
+    }
+  }
+  
+
+
+
+
+  .progress-bar-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #4caf50;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    transition: width 0.5s ease-in-out;
+}

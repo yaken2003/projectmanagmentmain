@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Project Management App</title>
+    <link rel="stylesheet" href="../styles/dashboard.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+          <h1>Dashboard</h1>
+          <div class="user-info">
+            <span id="userEmail">User</span>
+            <div class="dropdown">
+              <button class="dropbtn">☰</button>
+              <div class="dropdown-content">
+                <a href="adminDashboard.html">Dashboard</a>
+                <a href="manageUsers.html">Manage Users</a>
+                <a href="adminTasks.html">View Tasks</a>
+                <!-- <a href="Profile.html">Profile</a> -->
+    
+                <a href="#" id="logoutBtn">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    
+    <main>
+        <section class="overview">
+            <h2>Notifications</h2>
+            <ul id="notificationsList"></ul>
+        </section>
+        
+        <section class="stats">
+            <div class="card">
+                <h3>Active Tasks</h3>
+                <p></p>
+            </div>
+            <div class="card">
+                <h3>Completed Tasks</h3>
+                <p></p>
+            </div>
+            
+        </section>
+    </main>
+    
+    <script src="../scripts/dashboard.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const email = localStorage.getItem('email');
+            if (email) {
+                document.getElementById('userEmail').textContent = email;
+                fetchNotifications(email);
+            }
+
+            document.getElementById('logoutBtn').addEventListener('click', () => {
+                localStorage.removeItem('email');
+                localStorage.removeItem('password');
+                window.location.href = 'login.html';
+            });
+        });
+
+        function fetchNotifications(email) {
+            fetch(`https://projectmanagment-kappa.vercel.app/api/notifications/${email}`)
+                .then(response => response.json())
+                .then(notifications => {
+                    const notificationsList = document.getElementById('notificationsList');
+                    notificationsList.innerHTML = '';
+                    notifications.forEach(notification => {
+                        const li = document.createElement('li');
+                        li.textContent = notification.message;
+                        notificationsList.appendChild(li);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching notifications:', error);
+                });
+        }
+    </script>
+</body>
+</html>

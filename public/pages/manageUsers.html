@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Project Management App</title>
+    <link rel="stylesheet" href="../styles/project.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+          <h1>Manage Users</h1>
+            <div class="dropdown">
+              <button class="dropbtn">☰</button>
+              <div class="dropdown-content">
+                <a href="adminDashboard.html">Dashboard</a>
+                <a href="manageUsers.html">Manage Users</a>
+                <a href="adminTasks.html">View Tasks</a>
+            </div>
+          </div>
+        </div>
+      </header>
+    
+    <main>
+        <section class="manage-users">
+            <h2>Manage Users</h2>
+            <div class="user-form">
+                <input type="text" id="username" placeholder="Enter Username">
+                <input type="email" id="email" placeholder="Enter Email">
+                <input type="text" id="password" placeholder="Enter Password">
+                <button onclick="addUser()">Add User</button>
+                <button onclick="saveUpdate()" id="saveBtn" style="display:none;">Save Update</button>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userContainer">
+                  
+                </tbody>
+            </table>
+        </section>
+        
+    </main>
+    
+   
+    
+    <script>
+    let selectedUserId = null;
+
+async function fetchUsers() {
+    const response = await fetch("https://projectmanagment-kappa.vercel.app/api/users");
+    const users = await response.json();
+    const userContainer = document.getElementById("userContainer");
+    userContainer.innerHTML = "";
+    users.forEach(user => {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${user.username}</td><td class='email'>${user.email}</td>
+            <td>
+                <button onclick="editUser('${user._id}', '${user.username}', '${user.email}')">Edit</button>
+                <button onclick="deleteUser('${user._id}')">Delete</button>
+            </td>`;
+        userContainer.appendChild(row);
+    });
+}
+
+async function addUser() {
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    if (!username || !email || !password ) {
+        alert("All fields are required!");
+        return;
+    }
+
+  
+
+    await fetch("https://projectmanagment-kappa.vercel.app/api/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, email, password })
+    });
+    clearForm();
+    alert('User added successfully');
+
+    fetchUsers();
+}
+
+function editUser(id, username, email) {
+    selectedUserId = id;
+    document.getElementById("username").value = username;
+    document.getElementById("email").value = email;
+    document.getElementById("saveBtn").style.display = "inline-block";
+}
+
+async function saveUpdate() {
+    if (!selectedUserId) return;
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+
+    
+    await fetch(`https://projectmanagment-kappa.vercel.app/api/users`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: selectedUserId,username, email})
+    });
+    clearForm();
+    fetchUsers();
+}
+
+async function deleteUser(id) {
+    await fetch(`https://projectmanagment-kappa.vercel.app/api/users`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id:id})
+    });
+    fetchUsers();
+}
+
+function clearForm() {
+    document.getElementById("username").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("confirmPassword").value = "";
+    document.getElementById("saveBtn").style.display = "none";
+    selectedUserId = null;
+}
+
+document.addEventListener("DOMContentLoaded", fetchUsers);
+</script>
+    
+</body>
+</html>

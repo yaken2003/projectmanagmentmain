@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container */
+.auth-container {
+    background: rgba(30, 41, 59, 0.95);
+    padding: 48px 36px;
+    max-width: 400px;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.auth-container h2 {
+    color: #f8fafc;
+    margin-bottom: 28px;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.auth-container input {
+    width: 100%;
+    padding: 14px 16px;
+    margin: 12px 0;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: #334155;
+    color: #f8fafc;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.auth-container input:focus {
+    border: 1px solid #3b82f6;
+    background: #475569;
+}
+
+.auth-container input::placeholder {
+    color: #cbd5e1;
+}
+
+.auth-container .auth-Button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 18px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    background: linear-gradient(to right, #3b82f6, #2563eb);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-container .auth-Button:hover {
+    background: linear-gradient(to right, #2563eb, #1e40af);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+.auth-container p {
+    color: #94a3b8;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+.auth-container a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+    .auth-container {
+        padding: 32px 20px;
+    }
+
+    .auth-container h2 {
+        font-size: 1.6em;
+    }
+}
